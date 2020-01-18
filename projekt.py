@@ -68,7 +68,31 @@ def tylko_2012_rok(zbior_list):
 # source:https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.pie.html
 # source: https://matplotlib.org/3.1.1/gallery/pie_and_polar_charts/pie_features.html#sphx-glr-gallery-pie-and-polar-charts-pie-features-py
 
-# def wykres_kolowy(dane):
+def wykres_kolowy(dane):
+
+    # podzielenie naszego slownika dane na dwie krotki
+    krotki = list(dane.items())
+
+    # sortowanie od najwiekszej do najmniejszej .......
+    krotki.sort(key=lambda x: x[1], reverse=True)
+
+    # tworzenie dwóch list, które będą pełnić funkcję argumantów(nazwy) i wartości(count) na naszym diagramie
+    nazwy = []
+    count = []
+
+    # wybranie 20 największych, gdyż diagram z 107 zbrodni jest nieczytelny
+    top_20 = krotki[:20]
+
+    # z każdej krotki kolejno klucz dodawane są do argumentów i ilość to wartości
+    for k, v in top_20:
+
+        nazwy.append(k[:12])
+        count.append(v)
+
+    # tworzenie diagramu kołowego
+    plt.pie(count, labels=nazwy, autopct='%1.1f%%', shadow=True)
+    # wyświetlenie go
+    plt.show()
 
 
 
@@ -81,10 +105,31 @@ def tylko_2012_rok(zbior_list):
     # odpowiednio to przedstawic - rok, ilosc itd...
 
 
-#def wykres_kolowy(dane):
-    #wprowadzic dane
-    #zadeklarowac legende
-    #wyswietlic wykres liniowy przy uzyciu biblioteki
+#def wykres_liniowy(dane):
+
+    # przypisujemy do labels nasze argumenty tj rok
+    labels = dane[0][2:]
+    # przypisujemy do vals nasze wartości tj ilość wystąpień podanej zbrodni
+    vals = dane[1][2:]
+
+    # tworzymy krotki z naszego słownika, który powstał przy użyciu zip()
+    tups = list(zip(labels, vals))
+    # sortujemy krotki od najmniejszej do największej
+    tups.sort(key=lambda x: x[0])
+    # ......
+    labels, vals = zip(*tups)
+    # Stworzenie listy z wartosci ?
+    vals = [int(val) for val in vals]
+
+    # rysowanie wykresu - wyswietlamy co 10-ty argument i co 10-tą wartośći, gdyż jest za dużo danych
+    plt.plot(labels[::10], vals[::10]) 
+    # dla lepszego widoku wykresu
+    plt.xticks(rotation=90)
+    # wyświetlamy wykres
+    plt.show()
+
+
+
 
 # PROGRAM
 # pobranie pliku csv - wywolanie funkcji - pobieranie_pliku_csv i zapisujemy plik do zmiennej globalnej tablica
