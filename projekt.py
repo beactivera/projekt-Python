@@ -165,6 +165,8 @@ do_pliku_tekstowego(wynik_violation, 'Violation.txt')
 wynik_autres= dany_wiersz(tablica1, 'Autres vols avec armes blanches')
 wykres_liniowy(wynik_autres)
 
+# dowolne zestawienie...
+
 
 
 
