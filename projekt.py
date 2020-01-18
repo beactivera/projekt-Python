@@ -121,7 +121,7 @@ def do_pliku_tekstowego(wynik, plik_txt):
             # zwiększamy licznik do momentu gdy a i b bedą znajdować się w naszym zestawieniu danej zbrodni
             i += 1
 
-#def wykres_liniowy(dane):
+def wykres_liniowy(dane):
 
     # przypisujemy do labels nasze argumenty tj rok
     labels = dane[0][2:]
@@ -151,20 +151,19 @@ def do_pliku_tekstowego(wynik, plik_txt):
 # pobranie pliku csv - wywolanie funkcji - pobieranie_pliku_csv i zapisujemy plik do zmiennej globalnej tablica
 tablica1 = pobieranie_pliku_csv('crime-in-france.csv')
 
-print(type(tablica1))
+# print(type(tablica1))
 
-# wynik_2012 = tylko_2012_rok(tablica1)
-# kolowy = wykres_kolowy(wynik1)
+# stworzenie diagramu kołowego dla zbrodni popełnionych w 2012 roku - tylko top 20
+wynik_2012 = tylko_2012_rok(tablica1)
+wykres_kolowy(wynik_2012)
 
-# tablica2 = pobieranie_pliku_csv('crime-in-france.csv')
+# zapisanie do nowego pliku tekstowego 'tabelki' z ilością popełnienia zbrodni 'Violations de domicile' w kolejnych miesiącach i latach
+wynik_violation = dany_wiersz(tablica1, 'Violations de domicile')
+do_pliku_tekstowego(wynik_violation, 'Violation.txt')
 
-# wynik_violation = dany_wiersz(tablica2,'Violation de domicile')
-# wynik_doc = do_pliku_tekstowego(wynik_violation,'Violation.txt')
-
-# tablica3 = pobieranie_pliku_csv('crime-in-france.csv')
-
-# wynik_autres= dany_wiersz(tablica3,'Autres vols avec armes blanches')
-# liniowy = wykres_liniowy(wynik_autres)
+# stworzenie wykresu liniowego dla zbrodni 'Autres vols avec armes blanches' w kolejnych miesiacach i latach
+wynik_autres= dany_wiersz(tablica1, 'Autres vols avec armes blanches')
+wykres_liniowy(wynik_autres)
 
 
 
