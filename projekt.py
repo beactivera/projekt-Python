@@ -95,15 +95,31 @@ def wykres_kolowy(dane):
     plt.show()
 
 
+def dany_wiersz(dane, nazwa):
+    # w każdym wierszu naszej tablicy
+    for row in dane:
+        # szukamy gdzie znajduje sie wiersz z daną zbrodnią 'nazwa'
+        if row[1] == nazwa:
+            return dane[0], row
 
-# def dany_wiersz(dane, nazwa):
-    #wypisanie kolejnych wartosci z dane o wierszu nazwa
 
-
-# def do_pliku_tekstowego(wynik, plik_txt)
-    # wpisanie do pliku txt naszych wynikow
-    # odpowiednio to przedstawic - rok, ilosc itd...
-
+def do_pliku_tekstowego(wynik, plik_txt):
+    # metodą w+ tworzymy i wpisujemy do nowego pliku tekstowego i zapisujemy lokalnie jako ext_file
+    with open(plik_txt, 'w+', encoding='utf-8') as ext_file:
+        # licznik
+        i = 0
+        # na początku dajemy nagłówki dla poszczególnych kolumn
+        ext_file.write('okres   ilość \n')
+        # scalamy lata i ilość wystąpień danej brodni w słownik oraz operujemy na dwóch zmiennych lokalnych
+        for a, b in zip(wynik[0], wynik[1]):
+            # dla pierwszego wiersza zostawiamy miejsce na nagłówek, który określiliśmy wyżej
+            if i > 1:
+                # nasze a to jest rok, w którym została popełniona dana zbrodnia
+                ext_file.write(a + ' ')
+                # nasze b to jest ilość występowania danej zbrodni
+                ext_file.write(b + '\n')
+            # zwiększamy licznik do momentu gdy a i b bedą znajdować się w naszym zestawieniu danej zbrodni
+            i += 1
 
 #def wykres_liniowy(dane):
 
