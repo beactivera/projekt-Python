@@ -65,8 +65,11 @@ def tylko_2012_rok(zbior_list):
 
 
 # źródła do wykresów:
-# source:https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.pie.html
-# source: https://matplotlib.org/3.1.1/gallery/pie_and_polar_charts/pie_features.html#sphx-glr-gallery-pie-and-polar-charts-pie-features-py
+# https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.pie.html
+# https://matplotlib.org/3.1.1/gallery/pie_and_polar_charts/pie_features.html#sphx-glr-gallery-pie-and-polar-charts-pie-features-py
+# https://matplotlib.org/gallery/pie_and_polar_charts/pie_and_donut_labels.html#sphx-glr-gallery-pie-and-polar-charts-pie-and-donut-labels-py
+# https://matplotlib.org/gallery/lines_bars_and_markers/barchart.html#sphx-glr-gallery-lines-bars-and-markers-barchart-py
+
 
 def wykres_kolowy(dane):
 
@@ -86,11 +89,13 @@ def wykres_kolowy(dane):
     # z każdej krotki kolejno klucz dodawane są do argumentów i ilość to wartości
     for k, v in top_20:
 
-        nazwy.append(k[:12])
+        nazwy.append(k[:40])
         count.append(v)
 
     # tworzenie diagramu kołowego
-    plt.pie(count, labels=nazwy, autopct='%1.1f%%')
+    plt.pie(count, labels=nazwy, autopct='%1.1f%%', textprops=dict(color='w'))
+    #legenda
+    plt.legend(nazwy, title='Top 20', loc='center left',bbox_to_anchor=(1, 0, 0.5, 1))
     # wyświetlenie go
     plt.show()
 
