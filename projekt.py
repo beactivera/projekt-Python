@@ -150,41 +150,29 @@ def wykres_liniowy(dane):
     plt.show()
 
 
-def wykres_barchart(dane1, dane2):
+def wykres_kolowy_2(dane1,dane2):
 
-    labels = dane1[0][2:]
-    vals1 = dane1[1][2:]
-    vals2 = dane2[1][2:]
+    # licznik
+    suma1 = 0
+    suma2 = 0
+    # zliczenie zartosci dla dane1 w zmiennej lokalnej suma1
+    for row in dane1:
+        suma1 += int(dane1[row])
 
-    width = 0.35  # the width of the bars
+    # zleczenie wartosci dla dane2 w zmiennej lokaljnej wynik2
+    for row in dane2:
+        suma2 += int(dane2[row])
 
-    # fig, ax = plt.subplots()
-    # rects1 = ax.bar(x - width/2, men_means, width, label='Men')
-    # rects2 = ax.bar(x + width/2, women_means, width, label='Women')
 
-    plt.subplot(labels, vals1, vals2)
-    # oznaczanie osi y
-    plt.set_ylabel('Ilość')
+    # tworzenie dwóch list, które będą pełnić funkcję argumentów(nazwy) i wartości(count) na naszym diagramie
+    nazwy = [dane1[2], dane2[2]]
+    count = [suma1, suma2]
+
+    # tworzenie diagramu kołowego
+    plt.pie(count, labels=nazwy, autopct='%1.1f%%', textprops=dict(color='w'))
     #legenda
-    plt.legend(dane1[0][2:], dane2[0][2:])
-
-
-    # def autolabel(rects):
-    #     """Attach a text label above each bar in *rects*, displaying its height."""
-    #     for rect in rects:
-    #         height = rect.get_height()
-    #         ax.annotate('{}'.format(height),
-    #                     xy=(rect.get_x() + rect.get_width() / 2, height),
-    #                     xytext=(0, 3),  # 3 points vertical offset
-    #                     textcoords="offset points",
-    #                     ha='center', va='bottom')
-
-
-    # autolabel(rects1)
-    # autolabel(rects2)
-
-    # fig.tight_layout()
-
+    plt.legend(nazwy, title="homicide", loc='center left',bbox_to_anchor=(1, 0, 0.5, 1))
+    # wyświetlenie go
     plt.show()
 
 
@@ -197,20 +185,21 @@ tablica1 = pobieranie_pliku_csv('crime-in-france.csv')
 
 # stworzenie diagramu kołowego dla zbrodni popełnionych w 2012 roku - tylko top 20
 wynik_2012 = tylko_2012_rok(tablica1)
-wykres_kolowy(wynik_2012)
+# wykres_kolowy(wynik_2012)
 
 # zapisanie do nowego pliku tekstowego 'tabelki' z ilością popełnienia zbrodni 'Violations de domicile' w kolejnych miesiącach i latach
 wynik_violation = dany_wiersz(tablica1, 'Violations de domicile')
+# print(wynik_violation)
 do_pliku_tekstowego(wynik_violation, 'Violation.txt')
 
 # stworzenie wykresu liniowego dla zbrodni 'Autres vols avec armes blanches' w kolejnych miesiacach i latach
 wynik_autres= dany_wiersz(tablica1, 'Autres vols avec armes blanches')
-wykres_liniowy(wynik_autres)
+# wykres_liniowy(wynik_autres)
 
 # dowolne zestawienie... 
 wynik_homici1 = dany_wiersz(tablica1, "Homicides pour voler et à l'occasion de vols")
 wynik_homici2 = dany_wiersz(tablica1, "Homicides pour d'autres motifs")
-wykres_barchart(wynik_homici1,wynik_homici2)
+wykres_kolowy_2(wynik_homici1,wynik_homici2)
 
 
 
