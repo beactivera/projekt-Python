@@ -150,28 +150,34 @@ def wykres_liniowy(dane):
     plt.show()
 
 
-def wykres_kolowy_2(dane1,dane2):
-
+def wykres_kolowy_2(dane1, dane2):
+ 
+    labels_1 = dane1[0][2:]
+    vals_1 = dane1[1][2:]
+ 
+    labels_2 = dane2[0][2:]
+    vals_2 = dane2[1][2:]
+ 
     # licznik
     suma1 = 0
     suma2 = 0
+ 
     # zliczenie zartosci dla dane1 w zmiennej lokalnej suma1
-    for row in dane1:
-        suma1 += int(dane1[row])
-
+    for column in vals_1:
+        suma1 += int(column)
+ 
     # zleczenie wartosci dla dane2 w zmiennej lokaljnej wynik2
-    for row in dane2:
-        suma2 += int(dane2[row])
-
-
+    for column in vals_2:
+        suma2 += int(column)
+ 
     # tworzenie dwóch list, które będą pełnić funkcję argumentów(nazwy) i wartości(count) na naszym diagramie
-    nazwy = [dane1[2], dane2[2]]
+    nazwy = ["Homicides pour voler et à l'occasion de vols", "Homicides pour d'autres motifs"]
     count = [suma1, suma2]
-
+ 
     # tworzenie diagramu kołowego
     plt.pie(count, labels=nazwy, autopct='%1.1f%%', textprops=dict(color='w'))
-    #legenda
-    plt.legend(nazwy, title="homicide", loc='center left',bbox_to_anchor=(1, 0, 0.5, 1))
+    # legenda
+    plt.legend(nazwy, loc='center left', bbox_to_anchor=(1, 0, 0.5, 1))
     # wyświetlenie go
     plt.show()
 
@@ -185,18 +191,17 @@ tablica1 = pobieranie_pliku_csv('crime-in-france.csv')
 
 # stworzenie diagramu kołowego dla zbrodni popełnionych w 2012 roku - tylko top 20
 wynik_2012 = tylko_2012_rok(tablica1)
-# wykres_kolowy(wynik_2012)
+wykres_kolowy(wynik_2012)
 
 # zapisanie do nowego pliku tekstowego 'tabelki' z ilością popełnienia zbrodni 'Violations de domicile' w kolejnych miesiącach i latach
 wynik_violation = dany_wiersz(tablica1, 'Violations de domicile')
-# print(wynik_violation)
 do_pliku_tekstowego(wynik_violation, 'Violation.txt')
 
 # stworzenie wykresu liniowego dla zbrodni 'Autres vols avec armes blanches' w kolejnych miesiacach i latach
 wynik_autres= dany_wiersz(tablica1, 'Autres vols avec armes blanches')
-# wykres_liniowy(wynik_autres)
+wykres_liniowy(wynik_autres)
 
-# dowolne zestawienie... 
+# dowolne zestawienie... - powody zabójstw
 wynik_homici1 = dany_wiersz(tablica1, "Homicides pour voler et à l'occasion de vols")
 wynik_homici2 = dany_wiersz(tablica1, "Homicides pour d'autres motifs")
 wykres_kolowy_2(wynik_homici1,wynik_homici2)
