@@ -150,6 +150,43 @@ def wykres_liniowy(dane):
     plt.show()
 
 
+def wykres_barchart(dane1, dane2):
+
+    labels = dane1[0][2:]
+    vals1 = dane1[1][2:]
+    vals2 = dane2[1][2:]
+
+    width = 0.35  # the width of the bars
+
+    # fig, ax = plt.subplots()
+    # rects1 = ax.bar(x - width/2, men_means, width, label='Men')
+    # rects2 = ax.bar(x + width/2, women_means, width, label='Women')
+
+    plt.subplot(labels, vals1, vals2)
+    # oznaczanie osi y
+    plt.set_ylabel('Ilość')
+    #legenda
+    plt.legend(dane1[0][2:], dane2[0][2:])
+
+
+    # def autolabel(rects):
+    #     """Attach a text label above each bar in *rects*, displaying its height."""
+    #     for rect in rects:
+    #         height = rect.get_height()
+    #         ax.annotate('{}'.format(height),
+    #                     xy=(rect.get_x() + rect.get_width() / 2, height),
+    #                     xytext=(0, 3),  # 3 points vertical offset
+    #                     textcoords="offset points",
+    #                     ha='center', va='bottom')
+
+
+    # autolabel(rects1)
+    # autolabel(rects2)
+
+    # fig.tight_layout()
+
+    plt.show()
+
 
 
 # PROGRAM
@@ -170,11 +207,10 @@ do_pliku_tekstowego(wynik_violation, 'Violation.txt')
 wynik_autres= dany_wiersz(tablica1, 'Autres vols avec armes blanches')
 wykres_liniowy(wynik_autres)
 
-# dowolne zestawienie...
-# Homicides pour voler et à l'occasion de vols, Homicides pour d'autres motifs
-# https://matplotlib.org/gallery/lines_bars_and_markers/barchart.html#sphx-glr-gallery-lines-bars-and-markers-barchart-py
-# grupowy barchart
-
+# dowolne zestawienie... 
+wynik_homici1 = dany_wiersz(tablica1, "Homicides pour voler et à l'occasion de vols")
+wynik_homici2 = dany_wiersz(tablica1, "Homicides pour d'autres motifs")
+wykres_barchart(wynik_homici1,wynik_homici2)
 
 
 
