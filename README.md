@@ -13,10 +13,11 @@ okresie.
 
 * Sporządzić wykres liniowy dla przestępstwa Autres vols avec armes blanches, ile wystąpień w danym
 okresie.
-    * pobrac plik csv(funkcja-pobieranie_pliku_csv), zaznaczyć tylko Autres vols avec armes blanches(wiersze) - funkcja-dany_wiersz, stworzyć wykres liniowy z biblioteki matplotlib(funkcja-wyrkes_liniowy) - dodać legende - poszczególny okres, kolorki itd...
+    * pobrac plik csv(funkcja-pobieranie_pliku_csv), zaznaczyć tylko Autres vols avec armes blanches(wiersze) - funkcja-dany_wiersz, stworzyć wykres liniowy z biblioteki matplotlib(funkcja-wykres_liniowy) - dodać legende - poszczególny okres, kolorki itd...
 
 *  Własne zestawienie z wykresem. (Pokusić się o przetłumaczenie poszczególnych przestępst wykorzystanych w analizie).
     * pobrac plik csv(funkcja-pobieranie_pliku_csv), dowolne zestawienie + wykres
+    * zestawienie dwóch rodzaji zabójstw - Homicides pour voler et à l'occasion de vols (Zabójstwa za kradzież i rozbój), Homicides pour d'autres motifs (Zabójstwa z innych powodów) , a więc zaznaczyć tylko te dwa wiersze - funkcja - dany_wiersz, stworzyć wykres barchart z biblioteki matplotlib (funkcja - wykres_barchart) - dodać legende - poszczególne okresy, kolorki itd...
 
 
 ### Wymagania:

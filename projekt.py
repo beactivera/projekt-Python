@@ -166,6 +166,9 @@ wynik_autres= dany_wiersz(tablica1, 'Autres vols avec armes blanches')
 wykres_liniowy(wynik_autres)
 
 # dowolne zestawienie...
+# Homicides pour voler et à l'occasion de vols, Homicides pour d'autres motifs
+# https://matplotlib.org/gallery/lines_bars_and_markers/barchart.html#sphx-glr-gallery-lines-bars-and-markers-barchart-py
+# grupowy barchart
 
 
 
