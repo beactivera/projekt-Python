@@ -15,7 +15,7 @@ def pobieranie_pliku_csv(plik_csv):
         for row in data:
             plik.append(row)
     
-    #zwraca liste kolejnych wierszy z pliku o formacie csv
+    # zwraca liste kolejnych wierszy z pliku o formacie csv
     return plik
 
 
@@ -70,13 +70,13 @@ def tylko_2012_rok(zbior_list):
 
 def wykres_kolowy(dane):
 
-    # podzielenie naszego slownika dane na dwie krotki
+    # podzielenie naszego słownika dane na dwie krotki
     krotki = list(dane.items())
 
     # sortowanie od najwiekszej do najmniejszej .......
     krotki.sort(key=lambda x: x[1], reverse=True)
 
-    # tworzenie dwóch list, które będą pełnić funkcję argumantów(nazwy) i wartości(count) na naszym diagramie
+    # tworzenie dwóch list, które będą pełnić funkcję argumentów(nazwy) i wartości(count) na naszym diagramie
     nazwy = []
     count = []
 
@@ -137,7 +137,7 @@ def wykres_liniowy(dane):
     # Stworzenie listy z wartosci ?
     vals = [int(val) for val in vals]
 
-    # rysowanie wykresu - wyswietlamy co 10-ty argument i co 10-tą wartośći, gdyż jest za dużo danych
+    # rysowanie wykresu - wyświetlamy co 10-ty argument i co 10-tą wartośći, gdyż jest za dużo danych
     plt.plot(labels[::10], vals[::10]) 
     # dla lepszego widoku wykresu
     plt.xticks(rotation=90)
@@ -148,7 +148,7 @@ def wykres_liniowy(dane):
 
 
 # PROGRAM
-# pobranie pliku csv - wywolanie funkcji - pobieranie_pliku_csv i zapisujemy plik do zmiennej globalnej tablica
+# pobranie pliku csv - wywołanie funkcji - pobieranie_pliku_csv i zapisujemy plik do zmiennej globalnej tablica
 tablica1 = pobieranie_pliku_csv('crime-in-france.csv')
 
 # print(type(tablica1))
