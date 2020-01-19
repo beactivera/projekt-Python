@@ -90,7 +90,7 @@ def wykres_kolowy(dane):
         count.append(v)
 
     # tworzenie diagramu kołowego
-    plt.pie(count, labels=nazwy, autopct='%1.1f%%', shadow=True)
+    plt.pie(count, labels=nazwy, autopct='%1.1f%%')
     # wyświetlenie go
     plt.show()
 
